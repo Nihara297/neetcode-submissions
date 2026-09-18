@@ -1,0 +1,16 @@
+class Solution {
+public:
+    bool canAttendMeetings(vector<Interval>& intervals) {
+        int n = intervals.size();
+        sort(intervals.begin(), intervals.end(), [](Interval a, Interval b) {
+            return a.start < b.start;
+        });
+        for (int i = 1; i < n; i++) {
+            if (intervals[i].start < intervals[i - 1].end) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+};
